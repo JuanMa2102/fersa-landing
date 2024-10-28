@@ -129,7 +129,7 @@ interface Social {
 export interface Stat {
   amount?: number | string;
   title?: string;
-  icon?: string;
+  image?: string;
 }
 
 export interface Item {
@@ -139,6 +139,12 @@ export interface Item {
   classes?: Record<string, string>;
   callToAction?: CallToAction;
   image?: Image;
+  alink?: { href: string };
+  telefonos?: {
+    whatsapp?: string;
+    telefono?: string;
+    ubicacion?: string;
+  }
 }
 
 export interface Price {
@@ -219,6 +225,12 @@ export interface Hero extends Omit<Headline, 'classes'>, Omit<Widget, 'isDark' |
   image?: string | unknown;
 }
 
+export interface AboutCard extends Omit<Headline, 'classes'>, Omit<Widget, 'isDark' | 'classes'> {
+  content?: string;
+  actions?: string | CallToAction[];
+  steps?: string;
+}
+
 export interface Team extends Omit<Headline, 'classes'>, Widget {
   team?: Array<TeamMember>;
 }
@@ -267,10 +279,22 @@ export interface Steps extends Omit<Headline, 'classes'>, Widget {
     description?: string;
     icon?: string;
     classes?: Record<string, string>;
+    alink?: { href: string };
+    telefonos?: {
+      whatsapp?: string;
+      telefono?: string;
+      ubicacion?: string;
+    }
   }>;
   callToAction?: string | CallToAction;
   image?: string | Image;
   isReversed?: boolean;
+}
+
+export interface Telefonos {
+  whatsapp?: string;
+  telefono?: string;
+  ubicacion?: string;
 }
 
 export interface Content extends Omit<Headline, 'classes'>, Widget {

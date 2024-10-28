@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { twMerge } from 'tailwind-merge';
-import type { Item } from '~/types';
+import type { Item, Telefonos } from '~/types';
 
 export interface Props {
   items?: Array<Item>;
@@ -18,21 +18,27 @@ const {
   description: descriptionClass = '',
   icon: defaultIconClass = 'text-primary dark:text-slate-200 border-primary dark:border-blue-700',
 } = classes;
+
+const getUrlWhatsapp = ( phoneNumber: string, message: string ) => {
+    return `https://api.whatsapp.com/send?phone=52${phoneNumber}&text=${message}`
+}
 ---
 
 {
   items && items.length && (
     <div class={containerClass}>
-      {items.map(({ title, description, icon, classes: itemClasses = {} }, index = 0) => (
+      {items.map(({ title, description, icon, classes: itemClasses = {}, alink, telefonos }, index = 0) => (
         <div class={twMerge('flex', panelClass, itemClasses?.panel)}>
           <div class="flex flex-col items-center mr-4 rtl:mr-0 rtl:ml-4">
             <div>
               <div class="flex items-center justify-center">
                 {(icon || defaultIcon) && (
-                  <Icon
-                    name={icon || defaultIcon}
-                    class={twMerge('w-10 h-10 p-2 rounded-full border-2', defaultIconClass, itemClasses?.icon)}
-                  />
+                  <a class="flex items-center justify-center" href={ telefonos?.whatsapp && getUrlWhatsapp(telefonos?.whatsapp, 'Hola! Quisiera más información' ) } target="_blank">
+                    <Icon
+                      name={icon || defaultIcon}
+                      class={twMerge('w-10 h-10 p-2 rounded-full border-2', defaultIconClass, itemClasses?.icon)}
+                    />
+                  </a>
                 )}
               </div>
             </div>
@@ -41,11 +47,54 @@ const {
           <div class={`pt-1 ${index !== items.length - 1 ? 'pb-8' : ''}`}>
             {title && <p class={twMerge('text-xl font-bold', titleClass, itemClasses?.title)} set:html={title} />}
             {description && (
-              <p
-                class={twMerge('text-muted mt-2', descriptionClass, itemClasses?.description)}
-                set:html={description}
-              />
+              // <div class="flex flex-row items-start gap-1 justify-start">
+              //   <Icon
+              //           name="tabler:map-pin"
+              //           class={twMerge(defaultIconClass, itemClasses?.icon, 'w-14 text-blue-400 mt-2 self-start h-full')}
+              //   />
+              //   <p
+              //     class={twMerge('text-muted mt-2', descriptionClass, itemClasses?.description)}
+              //     set:html={description}
+              //   />
+              // </div>
+              <div class="flex flex-row mt-2">
+                  <div class="flex items-start justify-start" >
+                    <a href={ telefonos?.ubicacion } target="_blank" >
+                      <Icon
+                        name="tabler:map-pin"
+                        class={twMerge(defaultIconClass, itemClasses?.icon, 'w-6 h-6 text-blue-400')}
+                      />
+                    </a>
+                  </div>
+                  <a href={ telefonos?.ubicacion } target="_blank" class="text-muted flex items-center justify-start">
+                      { description }
+                  </a>
+              </div>
             )}
+            {
+              telefonos && (
+                <div class="flex flex-col gap-2 mt-2">
+                  <a 
+                    href={ telefonos?.whatsapp && getUrlWhatsapp(telefonos?.whatsapp, 'Hola! Quisiera más información') } 
+                    class="text-muted flex items-center justify-start"
+                    target="_blank"
+                  >
+                      <Icon
+                        name="tabler:brand-whatsapp"
+                        class={twMerge(defaultIconClass, itemClasses?.icon, 'w-5 h-5 text-green-400')}
+                      />
+                      { telefonos.whatsapp }
+                    </a>
+                  <a href={`tel:+52${telefonos.telefono}`} class="text-muted flex items-center justify-start">
+                    <Icon
+                      name="tabler:phone"
+                      class={twMerge(defaultIconClass, itemClasses?.icon, 'w-5 h-5 text-blue-400')}
+                    />
+                    { telefonos.telefono }
+                  </a>
+                </div>
+              )
+            }
           </div>
         </div>
       ))}

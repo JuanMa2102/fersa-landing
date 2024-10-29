@@ -24,7 +24,7 @@ Cumplir con obligaciones legales.
 
 Protección de la Información
 
-En FERSA, implementamos medidas de seguridad administrativas y  técnicas para proteger su información personal contra accesos no autorizados. Solo el personal autorizado tiene acceso a esta información.
+En FERSA, implementamos medidas de seguridad administrativas y técnicas para proteger su información personal contra accesos no autorizados. Solo el personal autorizado tiene acceso a esta información.
 
 Compartir Información con Terceros
 

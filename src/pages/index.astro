@@ -2,7 +2,6 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Stats from '~/components/widgets/Stats.astro';
@@ -15,10 +14,9 @@ const metadata = {
   ignoreTitleTemplate: true,
 };
 
-const getUrlWhatsapp = ( phoneNumber: string, message: string ) => {
-    return `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`
-}
-
+const getUrlWhatsapp = (phoneNumber: string, message: string) => {
+  return `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+};
 ---
 
 <Layout metadata={metadata}>
@@ -38,13 +36,15 @@ const getUrlWhatsapp = ( phoneNumber: string, message: string ) => {
     image={{ src: '~/assets/images/fersa-chair.png', alt: 'Aberlin imagen' }}
   >
     <Fragment slot="title">
-      Impulsa tu productividad,  <span class=""> el equipo que buscas</span>
+      Impulsa tu productividad, <span class=""> el equipo que buscas</span>
       <span class="text-primary dark:text-secondary"> está en FERSA</span>
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">Fersa</span> cuenta con más de <span class="inline mb-1 font-bold">30 años de experiencia</span>, ofrecemos equipos forestales, agrícolas y de jardinería de marcas líderes,</span
+        <span class="font-semibold">Fersa</span> cuenta con más de <span class="inline mb-1 font-bold"
+          >30 años de experiencia</span
+        >, ofrecemos equipos forestales, agrícolas y de jardinería de marcas líderes,</span
       >
       garantizando calidad, servicio especializado y las mejores soluciones para impulsar tu productividad
     </Fragment>
@@ -73,141 +73,132 @@ const getUrlWhatsapp = ( phoneNumber: string, message: string ) => {
 
   <!-- Steps Widget ****************** -->
   <div class="grid mx-auto gap-8 md:gap-y-12 sm:grid-cols-2 px-4 md:px-6 max-w-5xl">
-
-  <Steps
-    id="sucursales"
-    title="Ubicación de nuestras sucursales"
-    items={[
-      {
-        title: 'Matriz San Cristóbal de las Casas',
-        description:
-          "Blvd. Juan Sabines Gtz. No. 5-D, Barrio de San Diego, 29270 San Cristóbal de las Casas, Chis.",
-        icon: 'ic:twotone-whatsapp',
-        classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
-        alink: { href: getUrlWhatsapp('529671928700', 'Hola, Quiero más información') },
-        telefonos: { 
-          whatsapp: '9671928700', 
-          telefono: '9676782735',
-          ubicacion: 'https://maps.app.goo.gl/nCaGBDvpuJfvKZXf7'
+    <Steps
+      id="sucursales"
+      title="Ubicación de nuestras sucursales"
+      items={[
+        {
+          title: 'Matriz San Cristóbal de las Casas',
+          description: 'Blvd. Juan Sabines Gtz. No. 5-D, Barrio de San Diego, 29270 San Cristóbal de las Casas, Chis.',
+          icon: 'ic:twotone-whatsapp',
+          classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
+          alink: { href: getUrlWhatsapp('529671928700', 'Hola, Quiero más información') },
+          telefonos: {
+            whatsapp: '9671928700',
+            telefono: '9676782735',
+            ubicacion: 'https://maps.app.goo.gl/nCaGBDvpuJfvKZXf7',
+          },
         },
-      },
-      {
-        title: 'Tielemans',
-        description:
-          "Av Yajalón 21, Barrio del Cerrillo, 29220 San Cristóbal de las Casas, Chis.",
-        icon: 'ic:twotone-whatsapp',
-        classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
-        alink: { href: getUrlWhatsapp('529671928700', 'Hola, Quiero más información') },
-        telefonos: { 
-          whatsapp: '9671500314', 
-          telefono: '9676886532',
-          ubicacion: 'https://maps.app.goo.gl/eYZ6DJoJteqAiKReA' 
+        {
+          title: 'Tielemans',
+          description: 'Av Yajalón 21, Barrio del Cerrillo, 29220 San Cristóbal de las Casas, Chis.',
+          icon: 'ic:twotone-whatsapp',
+          classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
+          alink: { href: getUrlWhatsapp('529671928700', 'Hola, Quiero más información') },
+          telefonos: {
+            whatsapp: '9671500314',
+            telefono: '9676886532',
+            ubicacion: 'https://maps.app.goo.gl/eYZ6DJoJteqAiKReA',
+          },
         },
-      },
-      {
-        title: 'Huixtla',
-        description:
-          'Calle, Negrete Pte. Local 2, Col Revolucionaria, 30640 Huixtla, Chis.',
-        icon: 'ic:twotone-whatsapp',
-        classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
-        telefonos: {
-          whatsapp: '9641393622',
-          telefono: '9646882736',
-          ubicacion: 'https://maps.app.goo.gl/UT5ZjpJ3RtD2PYJj6'
-        }
-      },
-      {
-        title: 'Pijijiapan',
-        description: '3ª Av. Norte Poniente No. 36-A Barrio, Las Flores, 30540 Pijijiapan, Chis.',
-        icon: 'ic:twotone-whatsapp',
-        classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
-        telefonos: {
-          whatsapp: '9181177124',
-          telefono: '9186451201',
-          ubicacion: 'https://maps.app.goo.gl/Gu7guSuzh6QUPxTu5'
-        }
-      },
-    ]}
-  />
-  <Steps
-  title=""
-  items={[
-    {
-      title: 'Cintalapa',
-      description:
-        "C. Central Sur No. 154-B, Centro, 30400 Cintalapa de Figueroa, Chis.",
-      icon: 'ic:twotone-whatsapp',
-      classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
-      telefonos: {
-        whatsapp: '9687442740',
-        telefono: '9686843754',
-        ubicacion: 'https://maps.app.goo.gl/kgeYjEPpKxn1cb6p9'
-      }
-    },
-    {
-      title: 'Tapachula',
-      description:
-        "Calle 3a. Ote. 34-C, Los Naranjos, Centro, 30700 Tapachula de Córdova y Ordóñez, Chis.",
-      icon: 'ic:twotone-whatsapp',
-      classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
-      telefonos: {
-        whatsapp: '9621149633',
-        telefono: '9626255431',
-        ubicacion: 'https://maps.app.goo.gl/nP9kg4i9tJsJ2ESN6'
-      }
-    },
-    {
-      title: 'Coita',
-      description:
-        'Av. Primera Sur Ote. 236, San Antonio, 29140 Ocozocoautla de Espinosa, Chis.',
-      icon: 'ic:twotone-whatsapp',
-      classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
-      telefonos: {
-        whatsapp: '9681176905',
-        telefono: '9686881174',
-        ubicacion: 'https://maps.app.goo.gl/jhpXq8DURA5TFyDFA'
-      }
-    },
-  ]}
-/>
+        {
+          title: 'Huixtla',
+          description: 'Calle, Negrete Pte. Local 2, Col Revolucionaria, 30640 Huixtla, Chis.',
+          icon: 'ic:twotone-whatsapp',
+          classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
+          telefonos: {
+            whatsapp: '9641393622',
+            telefono: '9646882736',
+            ubicacion: 'https://maps.app.goo.gl/UT5ZjpJ3RtD2PYJj6',
+          },
+        },
+        {
+          title: 'Pijijiapan',
+          description: '3ª Av. Norte Poniente No. 36-A Barrio, Las Flores, 30540 Pijijiapan, Chis.',
+          icon: 'ic:twotone-whatsapp',
+          classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
+          telefonos: {
+            whatsapp: '9181177124',
+            telefono: '9186451201',
+            ubicacion: 'https://maps.app.goo.gl/Gu7guSuzh6QUPxTu5',
+          },
+        },
+      ]}
+    />
+    <Steps
+      title=""
+      items={[
+        {
+          title: 'Cintalapa',
+          description: 'C. Central Sur No. 154-B, Centro, 30400 Cintalapa de Figueroa, Chis.',
+          icon: 'ic:twotone-whatsapp',
+          classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
+          telefonos: {
+            whatsapp: '9687442740',
+            telefono: '9686843754',
+            ubicacion: 'https://maps.app.goo.gl/kgeYjEPpKxn1cb6p9',
+          },
+        },
+        {
+          title: 'Tapachula',
+          description: 'Calle 3a. Ote. 34-C, Los Naranjos, Centro, 30700 Tapachula de Córdova y Ordóñez, Chis.',
+          icon: 'ic:twotone-whatsapp',
+          classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
+          telefonos: {
+            whatsapp: '9621149633',
+            telefono: '9626255431',
+            ubicacion: 'https://maps.app.goo.gl/nP9kg4i9tJsJ2ESN6',
+          },
+        },
+        {
+          title: 'Coita',
+          description: 'Av. Primera Sur Ote. 236, San Antonio, 29140 Ocozocoautla de Espinosa, Chis.',
+          icon: 'ic:twotone-whatsapp',
+          classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
+          telefonos: {
+            whatsapp: '9681176905',
+            telefono: '9686881174',
+            ubicacion: 'https://maps.app.goo.gl/jhpXq8DURA5TFyDFA',
+          },
+        },
+      ]}
+    />
+  </div>
 
-</div>
-
-<AboutCard
-    tagline="Quienes somos"
-    id='about'
-  >
+  <AboutCard tagline="Quienes somos" id="about">
     <Fragment slot="title">
       Con más de 30 años de experiencia<br />
     </Fragment>
 
     <Fragment slot="subtitle">
-      En <span class="font-semibold">Fersa</span> nos especializamos en la venta, refacciones y mantenimiento de equipos forestales, agrícolas y de jardinería.
-      Nos enorgullece ser distribuidores autorizados de marcas líderes a nivel mundial como <span class="text-primary dark:text-secondary"> Husqvarna, Oregon, Cifarelli, Koshin y Honda </span> en productos de fuerza.
-      Nuestro compromiso es brindar soluciones de calidad para profesionales y entusiastas del campo, la jardinería y el manejo forestal, asegurando un servicio técnico especializado y productos confiables que superan las expectativas de nuestros clientes.
+      En <span class="font-semibold">Fersa</span> nos especializamos en la venta, refacciones y mantenimiento de equipos
+      forestales, agrícolas y de jardinería. Nos enorgullece ser distribuidores autorizados de marcas líderes a nivel mundial
+      como <span class="text-primary dark:text-secondary"> Husqvarna, Oregon, Cifarelli, Koshin y Honda </span> en productos
+      de fuerza. Nuestro compromiso es brindar soluciones de calidad para profesionales y entusiastas del campo, la jardinería
+      y el manejo forestal, asegurando un servicio técnico especializado y productos confiables que superan las expectativas
+      de nuestros clientes.
     </Fragment>
 
     <Fragment slot="steps">
       <Steps2
-      title=""
-      subtitle=""
-      items={[
-        {
-          title: 'Visión',
-          description:
-            'Ser la mejor empresa del sureste mexicano con la mejor atención y servicio en el sector forestal, agricola y jardineria, ofreciendo solo productos de las mas alta calidad con los mejores precios del mercado a todos nuestros clientes.',
-        },
-        {
-          title: 'Misión',
-          description:
-            'Proporcionar a nuestros clientes las herramientas necesarias con los mas altos estandares de calidad para lograr un mejor desempeño y productividad en su trabajo diario, cubriendo sus expectativas en el giro forestal, agricola y jardinería.',
-        },
-      ]}
-    />
+        title=""
+        subtitle=""
+        items={[
+          {
+            title: 'Visión',
+            description:
+              'Ser la mejor empresa del sureste mexicano con la mejor atención y servicio en el sector forestal, agricola y jardineria, ofreciendo solo productos de las mas alta calidad con los mejores precios del mercado a todos nuestros clientes.',
+          },
+          {
+            title: 'Misión',
+            description:
+              'Proporcionar a nuestros clientes las herramientas necesarias con los mas altos estandares de calidad para lograr un mejor desempeño y productividad en su trabajo diario, cubriendo sus expectativas en el giro forestal, agricola y jardinería.',
+          },
+        ]}
+      />
     </Fragment>
+  </AboutCard>
 
-</AboutCard>
-  
   <Stats
     stats={[
       { image: '~/assets/images/husq.png' },

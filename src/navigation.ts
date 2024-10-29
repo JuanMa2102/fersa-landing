@@ -1,4 +1,4 @@
-import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+import { getPermalink } from './utils/permalinks';
 
 export const headerData = {
   links: [
@@ -12,7 +12,7 @@ export const headerData = {
     },
     {
       text: 'Sucursales',
-      href: '#sucursales'
+      href: '#sucursales',
     },
     // {
     //   text: 'Contacto',
@@ -23,15 +23,17 @@ export const headerData = {
 };
 
 export const footerData = {
-  links: [
-    
-  ],
+  links: [],
   secondaryLinks: [
     { text: 'Términos y condiciones', href: getPermalink('/terms') },
     { text: 'Políticas de privacidad', href: getPermalink('/privacy') },
   ],
   socialLinks: [
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/fersa.oficial?igsh=Y2p0ZzZ5OWsxOWl4' },
+    {
+      ariaLabel: 'Instagram',
+      icon: 'tabler:brand-instagram',
+      href: 'https://www.instagram.com/fersa.oficial?igsh=Y2p0ZzZ5OWsxOWl4',
+    },
     { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://www.facebook.com/ferremotobombas' },
     { ariaLabel: 'Linkedin', icon: 'tabler:brand-linkedin', href: 'https://www.linkedin.com/company/ferremotobombas' },
   ],

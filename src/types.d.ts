@@ -144,7 +144,7 @@ export interface Item {
     whatsapp?: string;
     telefono?: string;
     ubicacion?: string;
-  }
+  };
 }
 
 export interface Price {
@@ -284,7 +284,7 @@ export interface Steps extends Omit<Headline, 'classes'>, Widget {
       whatsapp?: string;
       telefono?: string;
       ubicacion?: string;
-    }
+    };
   }>;
   callToAction?: string | CallToAction;
   image?: string | Image;

@@ -5,9 +5,11 @@ import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Stats from '~/components/widgets/Stats.astro';
+import Stats2 from '~/components/widgets/Stats2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
 import AboutCard from '~/components/widgets/AboutCard.astro';
+import Catalog from '~/components/widgets/Catalog.astro';
 
 const metadata = {
   title: 'Fersa — Ferremotobombas',
@@ -27,7 +29,7 @@ const getUrlWhatsapp = (phoneNumber: string, message: string) => {
       {
         variant: 'primary',
         text: 'Catalogo',
-        href: 'https://drive.google.com/file/d/1Tu_eAz2uSg2zPNyt_UluoU3W6KMNk9wm/view',
+        href: 'https://mega.nz/file/lW4i2Rwa#vZgaSVaZlNtXbNldX4e4Fab_nENaLwKp9HogvKFs8Pc',
         target: '_blank',
         icon: 'tabler:download',
       },
@@ -43,7 +45,7 @@ const getUrlWhatsapp = (phoneNumber: string, message: string) => {
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
         <span class="font-semibold">Fersa</span> cuenta con más de <span class="inline mb-1 font-bold"
-          >30 años de experiencia</span
+          >40 años de experiencia</span
         >, ofrecemos equipos forestales, agrícolas y de jardinería de marcas líderes,</span
       >
       garantizando calidad, servicio especializado y las mejores soluciones para impulsar tu productividad
@@ -51,6 +53,8 @@ const getUrlWhatsapp = (phoneNumber: string, message: string) => {
   </Hero>
 
   <Features
+    backgroundColor="bg-husqvarna text-white"
+    classes={{ headline: 'text-white' }}
     id="services"
     tagline="Servicios"
     title="Nuestros servicios"
@@ -61,13 +65,28 @@ const getUrlWhatsapp = (phoneNumber: string, message: string) => {
         description:
           'Ofrecemos una amplia gama de equipos forestales, agrícolas y de jardinería de las marcas más confiables del mercado. Además, contamos con refacciones originales para garantizar el óptimo funcionamiento de tus equipos.',
         icon: 'tabler:currency-dollar',
+        image_link: { image: '~/assets/images/aberlin_mecanico.png' }
       },
       {
         title: 'Mantenimiento Preventivo y Correctivo',
         description:
           'Visita nuestro Taller Mecánico Especializado, donde brindamos servicio de mantenimiento preventivo y correctivo para mantener tus equipos en perfecto estado. Nuestro equipo de expertos se asegura de que tu maquinaria esté siempre lista para el trabajo, aumentando su vida útil y rendimiento.',
         icon: 'tabler:tool',
+        image_link: { image: '~/assets/images/aberlin_like.png' }
       },
+    ]}
+  />
+
+  <Catalog
+    stats={[
+      { image: '~/assets/images/catalogos/desbrozadora.png', title: 'ACCESORIOS'},
+      { image: '~/assets/images/catalogos/aceites.jpg', title: 'ACEITES Y LUBRICANTES'},
+      { image: '~/assets/images/catalogos/cilindro_moto.png', title: 'CONSUMIBLES'},
+      { image: '~/assets/images/catalogos/seguiridad.png', title: 'EQUIPOS DE PROTECCIÓN PERSONAL'},
+      { image: '~/assets/images/catalogos/equipos_w.jpg', title: 'EQUIPOS'},
+      { image: '~/assets/images/catalogos/pinzas.png', title: 'HERRAMIENTAS'},
+      { image: '~/assets/images/catalogos/zyro-image.png', title: 'REFACCIONES'},
+      { image: '~/assets/images/catalogos/riego.png' , title: 'RIEGO Y PODA'},
     ]}
   />
 
@@ -90,20 +109,8 @@ const getUrlWhatsapp = (phoneNumber: string, message: string) => {
           },
         },
         {
-          title: 'Tielemans',
-          description: 'Av Yajalón 21, Barrio del Cerrillo, 29220 San Cristóbal de las Casas, Chis.',
-          icon: 'ic:twotone-whatsapp',
-          classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
-          alink: { href: getUrlWhatsapp('529671928700', 'Hola, Quiero más información') },
-          telefonos: {
-            whatsapp: '9671500314',
-            telefono: '9676886532',
-            ubicacion: 'https://maps.app.goo.gl/eYZ6DJoJteqAiKReA',
-          },
-        },
-        {
           title: 'Huixtla',
-          description: 'Calle, Negrete Pte. Local 2, Col Revolucionaria, 30640 Huixtla, Chis.',
+          description: 'Calle, Negrete Pte. Local 2, Col Centro, 30640 Huixtla, Chis.',
           icon: 'ic:twotone-whatsapp',
           classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
           telefonos: {
@@ -165,20 +172,19 @@ const getUrlWhatsapp = (phoneNumber: string, message: string) => {
     />
   </div>
 
-  <AboutCard tagline="Quienes somos" id="about">
+  <AboutCard tagline="Quienes somos" id="about" backgroundColor='bg-husqvarna dark:bg-secondary text-white'>
     <Fragment slot="title">
-      Con más de 30 años de experiencia<br />
+      Con más de 40 años de experiencia<br />
     </Fragment>
-
-    <Fragment slot="subtitle">
-      En <span class="font-semibold">Fersa</span> nos especializamos en la venta, refacciones y mantenimiento de equipos
-      forestales, agrícolas y de jardinería. Nos enorgullece ser distribuidores autorizados de marcas líderes a nivel mundial
-      como <span class="text-primary dark:text-secondary"> Husqvarna, Oregon, Cifarelli, Koshin y Honda </span> en productos
-      de fuerza. Nuestro compromiso es brindar soluciones de calidad para profesionales y entusiastas del campo, la jardinería
-      y el manejo forestal, asegurando un servicio técnico especializado y productos confiables que superan las expectativas
-      de nuestros clientes.
+      <span slot="subtitle" class="text-white dark:text-white">
+        <span class="text-white dark:text-white" >En <span class="font-semibold">Fersa</span> nos especializamos en la venta, refacciones y mantenimiento de equipos
+        forest</span>ales, agrícolas y de jardinería. Nos enorgullece ser distribuidores autorizados de marcas líderes a nivel mundial
+        como <span class="text-primary dark:text-white"> Husqvarna, Oregon, Cifarelli, Koshin y Honda </span> en productos
+        de fuerza. Nuestro compromiso es brindar soluciones de calidad para profesionales y entusiastas del campo, la jardinería
+        y el manejo forestal, asegurando un servicio técnico especializado y productos confiables que superan las expectativas
+        de nuestros clientes.
+      </span>
     </Fragment>
-
     <Fragment slot="steps">
       <Steps2
         title=""
@@ -199,16 +205,19 @@ const getUrlWhatsapp = (phoneNumber: string, message: string) => {
     </Fragment>
   </AboutCard>
 
+  <Stats2
+    stats={[
+      { image: '~/assets/images/husq.png' }
+    ]}
+  />
   <Stats
     stats={[
-      { image: '~/assets/images/husq.png' },
       { image: '~/assets/images/koshin-logo.png' },
       { image: '~/assets/images/afosa-logo.png' },
       { image: '~/assets/images/honda-logo.png' },
       { image: '~/assets/images/oregon-logo.png' },
       { image: '~/assets/images/toyama.webp' },
-      { image: '~/assets/images/cifarelli-logo.webp' },
-      { image: '~/assets/images/swedish-logo.png' },
+      { image: '~/assets/images/cifarelli-logo.webp', object_fit: 'cover' },
       { image: '~/assets/images/bahco-logo.svg' },
       { image: '~/assets/images/gardena-logo.svg' },
     ]}
@@ -221,7 +230,7 @@ const getUrlWhatsapp = (phoneNumber: string, message: string) => {
       {
         variant: 'primary',
         text: 'Catalogo',
-        href: 'https://drive.google.com/drive/folders/1Ox-PxiG4M7HVId0D7O5FnZHS1XibWfoU?usp=drive_link',
+        href: 'https://drive.google.com/drive/folders/1-6FJKduHUPWZYzhESBYvlA4TRz3x6nRT',
         target: '_blank',
         icon: 'tabler:download',
       },

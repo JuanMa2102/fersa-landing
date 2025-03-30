@@ -18,14 +18,14 @@ const {
 
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
   <Headline title={title} subtitle={subtitle} tagline={tagline} />
-  <div class="flex flex-wrap justify-center -m-4 text-center">
+  <div class="flex flex-wrap justify-center text-center gap-10">
     {
       stats &&
-        stats.map(({ image }) => (
-          <div class="p-4 md:w-1/5 sm:w-1/2 w-full min-w-[220px] text-center md:border-r md:last:border-none dark:md:border-slate-500">
+        stats.map(({ image, object_fit }) => (
+          <div class="md:w-1/5 sm:w-1/2 w-full min-w-[220px] text-center md:border-r md:last:border-none dark:md:border-slate-500 min-h-4">
             {image && (
               <div class="font-heading text-primary text-[2.6rem] font-bold dark:text-white lg:text-5xl xl:text-6xl flex justify-center">
-                <Image src={image} alt="stats" width={150} height={40} style={'object-fit: contain;'} />
+                <Image src={image} alt="stats" width={400} height={50} style={`object-fit: ${object_fit ?? 'contain'} ; height: 50px;`} />
               </div>
             )}
           </div>

@@ -103,6 +103,7 @@ export interface Widget {
   isDark?: boolean;
   bg?: string;
   classes?: Record<string, string | Record<string, string>>;
+  backgroundColor?: string
 }
 
 export interface Headline {
@@ -130,6 +131,7 @@ export interface Stat {
   amount?: number | string;
   title?: string;
   image?: string;
+  object_fit?: string;
 }
 
 export interface Item {
@@ -139,6 +141,8 @@ export interface Item {
   classes?: Record<string, string>;
   callToAction?: CallToAction;
   image?: Image;
+  imageUrl?: Object;
+  image_link?: Stat;
   alink?: { href: string };
   telefonos?: {
     whatsapp?: string;
@@ -223,6 +227,7 @@ export interface Hero extends Omit<Headline, 'classes'>, Omit<Widget, 'isDark' |
   content?: string;
   actions?: string | CallToAction[];
   image?: string | unknown;
+  backgroundColor?: string;
 }
 
 export interface AboutCard extends Omit<Headline, 'classes'>, Omit<Widget, 'isDark' | 'classes'> {

@@ -12,6 +12,7 @@ module.exports = {
         default: 'var(--aw-color-text-default)',
         muted: 'var(--aw-color-text-muted)',
         whatsapp: 'var(--aw-color-whatsapp)',
+        husqvarna: 'var(--aw-color-husqvarna)',
       },
       fontFamily: {
         sans: ['var(--aw-font-sans, ui-sans-serif)', ...defaultTheme.fontFamily.sans],

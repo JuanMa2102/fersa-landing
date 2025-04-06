@@ -23,10 +23,10 @@ const {
     {
       stats &&
         stats.map(({ image }) => (
-          <div class="p-4 md:w-1/5 sm:w-1/2 w-full min-w-[220px] text-center md:border-r md:last:border-none dark:md:border-slate-500">
+          <div class="p-0 md:w-1/5 sm:w-1/2 w-full min-w-[500px] text-center md:border-r md:last:border-none dark:md:border-slate-500">
             {image && (
               <div class="font-heading text-primary text-[2.6rem] font-bold dark:text-white lg:text-5xl xl:text-6xl flex justify-center">
-                <Image src={image} alt="stats" width={250} height={80} style={'object-fit: contain;'} />
+                <Image src={image} alt="stats" width={350} height={80} style={'object-fit: contain;'} />
               </div>
             )}
           </div>

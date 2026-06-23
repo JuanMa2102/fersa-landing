@@ -11,6 +11,7 @@ export interface Props {
     title: string;
     description?: string;
     image?: string;
+    horario?: string;
     telefonos?: {
       whatsapp?: string;
       telefono?: string;
@@ -44,7 +45,7 @@ const getUrlWhatsapp = (phoneNumber: string, message: string) => {
   
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-0">
     {
-      items.map(({ title, description, image, telefonos }) => (
+      items.map(({ title, description, image, telefonos, horario }) => (
         <div class="flex flex-col sm:flex-row bg-white dark:bg-slate-900 rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 border border-slate-100 dark:border-slate-800 overflow-hidden group">
           {image && (
             <div class="relative overflow-hidden sm:w-2/5 md:w-[35%] shrink-0 aspect-[16/9] sm:aspect-square">
@@ -67,6 +68,13 @@ const getUrlWhatsapp = (phoneNumber: string, message: string) => {
               <div class="flex items-start gap-1.5 mb-3 text-gray-600 dark:text-gray-400">
                 <Icon name="tabler:map-pin" class="w-4 h-4 text-primary shrink-0 mt-0.5" />
                 <p class="text-xs leading-normal">{description}</p>
+              </div>
+            )}
+
+            {horario && (
+              <div class="flex items-start gap-1.5 mb-3 text-gray-600 dark:text-gray-400">
+                <Icon name="tabler:clock" class="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
+                <p class="text-xs leading-normal">{horario}</p>
               </div>
             )}
             

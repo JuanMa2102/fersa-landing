@@ -140,7 +140,7 @@ export interface Item {
   icon?: string;
   classes?: Record<string, string>;
   callToAction?: CallToAction;
-  image?: Image;
+  image?: string | Image;
   imageUrl?: Object;
   image_link?: Stat;
   alink?: { href: string };
@@ -285,6 +285,7 @@ export interface Steps extends Omit<Headline, 'classes'>, Widget {
     icon?: string;
     classes?: Record<string, string>;
     alink?: { href: string };
+    image?: string | Image;
     telefonos?: {
       whatsapp?: string;
       telefono?: string;

@@ -3,21 +3,17 @@ import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
-import Steps from '~/components/widgets/Steps.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import Stats2 from '~/components/widgets/Stats2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
 import AboutCard from '~/components/widgets/AboutCard.astro';
 import Catalog from '~/components/widgets/Catalog.astro';
+import Branches from '~/components/widgets/Branches.astro';
 
 const metadata = {
   title: 'Fersa — Ferremotobombas',
   ignoreTitleTemplate: true,
-};
-
-const getUrlWhatsapp = (phoneNumber: string, message: string) => {
-  return `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
 };
 ---
 
@@ -38,23 +34,17 @@ const getUrlWhatsapp = (phoneNumber: string, message: string) => {
     image={{ src: '~/assets/images/fersa-chair.png', alt: 'Aberlin imagen' }}
   >
     <Fragment slot="title">
-      Impulsa tu productividad, <span class=""> el equipo que buscas</span>
-      <span class="text-primary dark:text-secondary"> está en FERSA</span>
+      Con más de <span class="text-primary dark:text-secondary">45 años de experiencia</span> en el mercado
     </Fragment>
 
     <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <span class="font-semibold">Fersa</span> cuenta con más de <span class="inline mb-1 font-bold"
-          >40 años de experiencia</span
-        >, ofrecemos equipos forestales, agrícolas y de jardinería de marcas líderes,</span
-      >
-      garantizando calidad, servicio especializado y las mejores soluciones para impulsar tu productividad
+      En <span class="font-semibold">FERSA</span> nos especializamos en la venta, refacciones y mantenimiento de equipos forestales, agrícolas y de jardinería. Nos enorgullece ser distribuidores autorizados de marcas líderes a nivel mundial como <span class="font-bold">Husqvarna, Oregon, Cifarelli, Koshin, Afosa</span> en productos de fuerza. Nuestro compromiso es brindar soluciones de calidad, para profesionales y entusiastas del campo, la jardinería y el manejo forestal, asegurando un servicio técnico especializado y productos confiables que superan las expectativas de nuestros clientes.
     </Fragment>
   </Hero>
 
   <Features
     backgroundColor="bg-husqvarna text-white"
-    classes={{ headline: 'text-white' }}
+    classes={{ headline: { title: 'text-white', subtitle: 'text-white' } }}
     id="services"
     tagline=""
     title="Nuestros servicios"
@@ -90,87 +80,74 @@ const getUrlWhatsapp = (phoneNumber: string, message: string) => {
     ]}
   />
 
-  <!-- Steps Widget ****************** -->
-  <div class="grid mx-auto gap-8 md:gap-y-12 sm:grid-cols-2 px-4 md:px-6 max-w-5xl">
-    <Steps
-      id="sucursales"
-      title="Ubicación de nuestras sucursales"
-      items={[
-        {
-          title: 'Matriz San Cristóbal de las Casas',
-          description: 'Blvd. Juan Sabines Gtz. No. 5-D, Barrio de San Diego, 29270 San Cristóbal de las Casas, Chis.',
-          icon: 'ic:twotone-whatsapp',
-          classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
-          alink: { href: getUrlWhatsapp('529671928700', 'Hola, Quiero más información') },
-          telefonos: {
-            whatsapp: '9671928700',
-            telefono: '9676782735',
-            ubicacion: 'https://maps.app.goo.gl/nCaGBDvpuJfvKZXf7',
-          },
+  <!-- Branches Widget ****************** -->
+  <Branches
+    id="sucursales"
+    title="Ubicación de nuestras sucursales"
+    subtitle="Visítanos en cualquiera de nuestras sucursales para recibir atención personalizada."
+    items={[
+      {
+        title: 'Matriz San Cristóbal de las Casas',
+        description: 'Blvd. Juan Sabines Gtz. No. 5-D, Barrio de San Diego, 29270 San Cristóbal de las Casas, Chis.',
+        image: '/sancristobal.jpeg',
+        telefonos: {
+          whatsapp: '9671928700',
+          telefono: '9676782735',
+          ubicacion: 'https://maps.app.goo.gl/nCaGBDvpuJfvKZXf7',
         },
-        {
-          title: 'Huixtla',
-          description: 'Calle, Negrete Pte. Local 2, Col Centro, 30640 Huixtla, Chis.',
-          icon: 'ic:twotone-whatsapp',
-          classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
-          telefonos: {
-            whatsapp: '9641393622',
-            telefono: '9646882736',
-            ubicacion: 'https://maps.app.goo.gl/UT5ZjpJ3RtD2PYJj6',
-          },
+      },
+      {
+        title: 'Huixtla',
+        description: 'Calle, Negrete Pte. Local 2, Col Centro, 30640 Huixtla, Chis.',
+        image: '/huixtla.jpeg',
+        telefonos: {
+          whatsapp: '9641393622',
+          telefono: '9646882736',
+          ubicacion: 'https://maps.app.goo.gl/UT5ZjpJ3RtD2PYJj6',
         },
-        {
-          title: 'Pijijiapan',
-          description: '3ª Av. Norte Poniente No. 36-A Barrio, Las Flores, 30540 Pijijiapan, Chis.',
-          icon: 'ic:twotone-whatsapp',
-          classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
-          telefonos: {
-            whatsapp: '9181177124',
-            telefono: '9186451201',
-            ubicacion: 'https://maps.app.goo.gl/Gu7guSuzh6QUPxTu5',
-          },
+      },
+      {
+        title: 'Pijijiapan',
+        description: '3ª Av. Norte Poniente No. 36-A Barrio, Las Flores, 30540 Pijijiapan, Chis.',
+        image: '/pijijiapan.jpeg',
+        telefonos: {
+          whatsapp: '9181177124',
+          telefono: '9186451201',
+          ubicacion: 'https://maps.app.goo.gl/Gu7guSuzh6QUPxTu5',
         },
-      ]}
-    />
-    <Steps
-      title=""
-      items={[
-        {
-          title: 'Cintalapa',
-          description: 'C. Central Sur No. 154-B, Centro, 30400 Cintalapa de Figueroa, Chis.',
-          icon: 'ic:twotone-whatsapp',
-          classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
-          telefonos: {
-            whatsapp: '9687442740',
-            telefono: '9686843754',
-            ubicacion: 'https://maps.app.goo.gl/kgeYjEPpKxn1cb6p9',
-          },
+      },
+      {
+        title: 'Cintalapa',
+        description: 'C. Central Sur No. 154-B, Centro, 30400 Cintalapa de Figueroa, Chis.',
+        image: '/cintalapa.jpeg',
+        telefonos: {
+          whatsapp: '9687442740',
+          telefono: '9686843754',
+          ubicacion: 'https://maps.app.goo.gl/kgeYjEPpKxn1cb6p9',
         },
-        {
-          title: 'Tapachula',
-          description: 'Calle 3a. Ote. 34-C, Los Naranjos, Centro, 30700 Tapachula de Córdova y Ordóñez, Chis.',
-          icon: 'ic:twotone-whatsapp',
-          classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
-          telefonos: {
-            whatsapp: '9621149633',
-            telefono: '9626255431',
-            ubicacion: 'https://maps.app.goo.gl/nP9kg4i9tJsJ2ESN6',
-          },
+      },
+      {
+        title: 'Tapachula',
+        description: 'Calle 3a. Ote. 34-C, Los Naranjos, Centro, 30700 Tapachula de Córdova y Ordóñez, Chis.',
+        image: '/tapachula.jpeg',
+        telefonos: {
+          whatsapp: '9621149633',
+          telefono: '9626255431',
+          ubicacion: 'https://maps.app.goo.gl/nP9kg4i9tJsJ2ESN6',
         },
-        {
-          title: 'Coita',
-          description: 'Av. Primera Sur Ote. 236, San Antonio, 29140 Ocozocoautla de Espinosa, Chis.',
-          icon: 'ic:twotone-whatsapp',
-          classes: { icon: 'text-whatsapp border-whatsapp dark:text-whatsapp dark:border-whatsapp' },
-          telefonos: {
-            whatsapp: '9681176905',
-            telefono: '9686881174',
-            ubicacion: 'https://maps.app.goo.gl/jhpXq8DURA5TFyDFA',
-          },
+      },
+      {
+        title: 'Coita',
+        description: 'Av. Primera Sur Ote. 236, San Antonio, 29140 Ocozocoautla de Espinosa, Chis.',
+        image: '/ocozocoautla.jpeg',
+        telefonos: {
+          whatsapp: '9681176905',
+          telefono: '9686881174',
+          ubicacion: 'https://maps.app.goo.gl/jhpXq8DURA5TFyDFA',
         },
-      ]}
-    />
-  </div>
+      },
+    ]}
+  />
 
   <AboutCard tagline="Quienes somos" id="about" backgroundColor='bg-husqvarna dark:bg-secondary text-white'>
     <Fragment slot="title">
@@ -179,7 +156,7 @@ const getUrlWhatsapp = (phoneNumber: string, message: string) => {
       <span slot="subtitle" class="text-white dark:text-white">
         <span class="text-white dark:text-white" >En <span class="font-semibold">Fersa</span> nos especializamos en la venta, refacciones y mantenimiento de equipos
         forest</span>ales, agrícolas y de jardinería. Nos enorgullece ser distribuidores autorizados de marcas líderes a nivel mundial
-        como <span class="text-primary dark:text-white"> Husqvarna, Oregon, Cifarelli, Koshin y Honda </span> en productos
+        como <span class="text-primary dark:text-white"> Husqvarna, Oregon, Cifarelli y Koshin </span> en productos
         de fuerza. Nuestro compromiso es brindar soluciones de calidad para profesionales y entusiastas del campo, la jardinería
         y el manejo forestal, asegurando un servicio técnico especializado y productos confiables que superan las expectativas
         de nuestros clientes.
@@ -214,7 +191,6 @@ const getUrlWhatsapp = (phoneNumber: string, message: string) => {
     stats={[
       { image: '~/assets/images/koshin-logo.png' },
       { image: '~/assets/images/afosa-logo.png' },
-      { image: '~/assets/images/honda-logo.png' },
       { image: '~/assets/images/oregon-logo.png' },
       { image: '~/assets/images/toyama.webp' },
       { image: '~/assets/images/cifarelli-logo.webp', object_fit: 'cover' },
@@ -223,7 +199,7 @@ const getUrlWhatsapp = (phoneNumber: string, message: string) => {
     ]}
   />
 
-  <!-- CallToAction Widget *********** -->
+  <!--CallToAction Widget *********** -->
 
   <CallToAction
     actions={[
@@ -244,4 +220,4 @@ const getUrlWhatsapp = (phoneNumber: string, message: string) => {
       Descarga nuestro catálogo y descubre las mejores herramientas para tu trabajo.
     </Fragment>
   </CallToAction>
-</Layout>
+</Layout >

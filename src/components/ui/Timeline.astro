@@ -26,7 +26,7 @@ const getUrlWhatsapp = (phoneNumber: string, message: string) => {
 {
   items && items.length && (
     <div class={containerClass}>
-      {items.map(({ title, description, icon, classes: itemClasses = {}, telefonos }, index = 0) => (
+      {items.map(({ title, description, icon, classes: itemClasses = {}, telefonos, image }, index = 0) => (
         <div class={twMerge('flex', panelClass, itemClasses?.panel)}>
           <div class="flex flex-col items-center mr-4 rtl:mr-0 rtl:ml-4">
             <div>
@@ -49,6 +49,24 @@ const getUrlWhatsapp = (phoneNumber: string, message: string) => {
           </div>
           <div class={`pt-1 ${index !== items.length - 1 ? 'pb-8' : ''}`}>
             {title && <p class={twMerge('text-xl font-bold', titleClass, itemClasses?.title)} set:html={title} />}
+            {image && (
+              <div class="mt-3 mb-3 overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300 max-w-sm border border-gray-200 dark:border-slate-800">
+                <a href={telefonos?.ubicacion} target="_blank" class="block group relative overflow-hidden">
+                  <img
+                    src={typeof image === 'string' ? image : image.src}
+                    alt={typeof image === 'string' ? title : (image.alt || title || 'Sucursal')}
+                    class="w-full h-44 object-cover transform group-hover:scale-105 transition-transform duration-500 ease-out"
+                    loading="lazy"
+                  />
+                  <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span class="bg-black/85 text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg border border-white/20">
+                      <Icon name="tabler:map-pin" class="w-4 h-4 text-red-500" />
+                      Ver en Google Maps
+                    </span>
+                  </div>
+                </a>
+              </div>
+            )}
             {description && (
               // <div class="flex flex-row items-start gap-1 justify-start">
               //   <Icon

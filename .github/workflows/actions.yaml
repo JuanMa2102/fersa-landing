@@ -1,41 +1,39 @@
-name: GitHub Actions
+name: Deploy Astro to HostGator
 
 on:
-  pull_request:
-    branches:
-      - main
   push:
     branches:
       - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version:
-          - 18
-          - 20
-          - 22
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js v${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: npm
-      - run: npm ci
-      - run: npm run build
-      # - run: npm test
 
-  check:
-    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js 22
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: npm run check
+          node-version: 20
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Build Astro
+        run: npm run build
+
+      - name: Configurar SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Agregar host a known_hosts
+        run: |
+          ssh-keyscan -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy dist/ a HostGator
+        run: |
+          rsync -avz --delete \
+            ./dist/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}

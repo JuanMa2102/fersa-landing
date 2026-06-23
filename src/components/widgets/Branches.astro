@@ -1,0 +1,113 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
+import { Icon } from 'astro-icon/components';
+
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  items?: Array<{
+    title: string;
+    description?: string;
+    image?: string;
+    telefonos?: {
+      whatsapp?: string;
+      telefono?: string;
+      ubicacion?: string;
+    };
+  }>;
+  id?: string;
+  isDark?: boolean;
+  classes?: Record<string, string>;
+  bg?: string;
+}
+
+const {
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  tagline = await Astro.slots.render('tagline'),
+  items = [],
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+
+const getUrlWhatsapp = (phoneNumber: string, message: string) => {
+  return `https://api.whatsapp.com/send?phone=52${phoneNumber}&text=${message}`;
+};
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-5xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+  <Headline title={title} subtitle={subtitle} tagline={tagline}  />
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-0">
+    {
+      items.map(({ title, description, image, telefonos }) => (
+        <div class="flex flex-col sm:flex-row bg-white dark:bg-slate-900 rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 border border-slate-100 dark:border-slate-800 overflow-hidden group">
+          {image && (
+            <div class="relative overflow-hidden sm:w-2/5 md:w-[35%] shrink-0 aspect-[16/9] sm:aspect-square">
+              <img
+                src={image}
+                alt={title}
+                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-out"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300" />
+            </div>
+          )}
+          
+          <div class="flex flex-col flex-grow p-4 md:p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors duration-300">
+              {title}
+            </h3>
+            
+            {description && (
+              <div class="flex items-start gap-1.5 mb-3 text-gray-600 dark:text-gray-400">
+                <Icon name="tabler:map-pin" class="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                <p class="text-xs leading-normal">{description}</p>
+              </div>
+            )}
+            
+            <div class="mt-auto pt-2 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-2">
+              {telefonos?.whatsapp && (
+                <a
+                  href={getUrlWhatsapp(telefonos.whatsapp, 'Hola! Quisiera más información')}
+                  class="flex items-center gap-1.5 text-gray-700 dark:text-gray-300 hover:text-green-500 dark:hover:text-green-400 transition-colors text-xs font-medium"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon name="tabler:brand-whatsapp" class="w-4 h-4 text-green-500" />
+                  <span>WhatsApp: {telefonos.whatsapp}</span>
+                </a>
+              )}
+              
+              {telefonos?.telefono && (
+                <a
+                  href={`tel:+52${telefonos.telefono}`}
+                  class="flex items-center gap-1.5 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors text-xs font-medium"
+                >
+                  <Icon name="tabler:phone" class="w-4 h-4 text-blue-500 dark:text-blue-400" />
+                  <span>Teléfono: {telefonos.telefono}</span>
+                </a>
+              )}
+
+              {telefonos?.ubicacion && (
+                <a
+                  href={telefonos.ubicacion}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-1 inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-primary hover:bg-primary/95 text-white dark:text-white text-xs font-semibold rounded shadow-sm hover:shadow transition-all duration-300 text-center w-fit"
+                >
+                  <Icon name="tabler:map" class="w-3.5 h-3.5" />
+                  Cómo llegar
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</WidgetWrapper>

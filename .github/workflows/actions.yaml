@@ -36,4 +36,5 @@ jobs:
       - name: Deploy dist/ a HostGator
         run: |
           rsync -avz --delete \
+            -e "ssh -p ${{ secrets.SSH_PORT }} -o StrictHostKeyChecking=no -o LogLevel=QUIET" \
             ./dist/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}
